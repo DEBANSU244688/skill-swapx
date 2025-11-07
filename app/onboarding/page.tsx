@@ -25,11 +25,16 @@ const skillSuggestions = [
   "Cooking",
 ]
 
+type SkillLevel = "Beginner" | "Intermediate" | "Expert"
+
 export default function Onboarding() {
   const router = useRouter()
-  const [skills, setSkills] = useState({
-    teach: { skill: "", level: "Intermediate" as const },
-    learn: { skill: "", level: "Beginner" as const },
+  const [skills, setSkills] = useState<{
+    teach: { skill: string; level: SkillLevel }
+    learn: { skill: string; level: SkillLevel }
+  }>({
+    teach: { skill: "", level: "Intermediate" },
+    learn: { skill: "", level: "Beginner" },
   })
 
   const handleMatch = () => {
